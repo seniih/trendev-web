@@ -1,0 +1,226 @@
+{
+  "nav": {
+    "home": "Ana Sayfa",
+    "projects": "Projeler",
+    "about": "Hakkımızda",
+    "why": "Neden TrendEv?",
+    "contact": "İletişim",
+    "call": "Hemen Ara",
+    "whatsapp": "WhatsApp"
+  },
+  "common": {
+    "brand": "Trend Ev",
+    "slogan": "Doğanın Kalbinde Kendinize Yer Açın",
+    "getInfo": "Bilgi Al",
+    "callNow": "Hemen Ara",
+    "whatsappCta": "WhatsApp'tan Yaz",
+    "viewAll": "Tümünü Gör",
+    "viewDetails": "Detayları Gör",
+    "readMore": "Devamını Oku",
+    "available": "Satılık",
+    "reserved": "Rezerve",
+    "sold": "Satıldı",
+    "parcels": "parsel",
+    "area": "Alan",
+    "price": "Fiyat",
+    "region": "Konum",
+    "district": "İlçe"
+  },
+  "hero": {
+    "eyebrow": "Sakarya • Arsa Sizden Ev Bizden",
+    "title": "Doğanın Kalbinde Kendinize Yer Açın",
+    "subtitle": "Sakarya'nın kırsal yerleşim alanlarında; imarlı arsası, projesi çizilmiş, ruhsatı hazır, bahçeli ve müstakil villa projeleri. Tapu güvenceli, kolay ödemeli.",
+    "ctaPrimary": "Projeleri Keşfet",
+    "ctaSecondary": "Hemen Ara",
+    "scroll": "Aşağı kaydır"
+  },
+  "stats": {
+    "title": "Rakamlarla Trend Ev",
+    "projects": "Ev Projesi",
+    "projectsValue": "14",
+    "districts": "İlçe",
+    "districtsValue": "8",
+    "parcels": "Villa Parseli",
+    "parcelsValue": "177+",
+    "secure": "Güvence",
+    "secureValue": "Tapulu & Ruhsatlı"
+  },
+  "projectsMap": {
+    "eyebrow": "Sakarya'nın Her Köşesinde",
+    "title": "Projelerimiz Haritada",
+    "subtitle": "Sakarya'nın 8 ilçesinde, doğayla iç içe 14 farklı noktada sizi bekleyen bahçeli ev fırsatları.",
+    "alt": "Sakarya haritasında Trend Ev proje lokasyonları"
+  },
+  "featured": {
+    "eyebrow": "Öne Çıkan Projeler",
+    "title": "Doğanın Kalbinde Ev Sahibi Olma Fırsatları",
+    "subtitle": "Sakarya'nın 8 ilçesinde, doğayla iç içe villa projelerimizden bazıları."
+  },
+  "why": {
+    "eyebrow": "Neden TrendEv?",
+    "title": "Arsa Sizden, Ev Bizden — Riski Biz Üstleniyoruz",
+    "subtitle": "İmarından ruhsatına, projeden tapuya kadar tüm süreci biz yürütüyoruz; siz sadece evinizi seçiyorsunuz.",
+    "mascotAlt": "Trend Ev maskotu sincap",
+    "items": {
+      "value": {
+        "title": "Maliyetine Ev Sahibi Olma",
+        "text": "Aracı kâr marjı olmadan, arsa ve inşaat maliyetine bahçeli villanıza sahip olursunuz."
+      },
+      "secure": {
+        "title": "Ruhsatlı & Tapu Güvenceli",
+        "text": "Yapı ruhsatı alınmış, kat irtifakı tapusu hazırlanmış parsellerle resmi güvence altındasınız."
+      },
+      "infra": {
+        "title": "Altyapı Hazır",
+        "text": "Yol, su, elektrik ve site içi düzenlemeleri tamamlanmış projelerle inşaata hemen başlanabilir."
+      },
+      "payment": {
+        "title": "Kolay Ödeme",
+        "text": "Bütçenize uygun ödeme modeliyle, aylık taksitlerle hayalinizdeki bahçeli eve ulaşırsınız."
+      }
+    }
+  },
+  "steps": {
+    "eyebrow": "Nasıl Çalışır?",
+    "title": "5 Adımda Bahçeli Evinize Kavuşun",
+    "items": {
+      "one": { "title": "Arsayı Seçin", "text": "20'den fazla noktadaki projelerimizi birlikte gezip size uygun arsayı seçin." },
+      "two": { "title": "Evinizi Tasarlayın", "text": "Mimarımızla birlikte eviniz planı üzerinde çalışın." },
+      "three": { "title": "Ruhsat & Tapu", "text": "Yapı ruhsatı ve kat irtifakı tapusu tarafımızca hazırlanır." },
+      "four": { "title": "Ödeme Planı", "text": "Bütçenize uygun bir ödeme modeli birlikte oluşturulur." },
+      "five": { "title": "Anahtarınızı Alın", "text": "Tapunuz elinizde, evinizde huzurla yaşamaya başlayın." }
+    }
+  },
+  "trust": {
+    "eyebrow": "Güvence",
+    "title": "Neden Trend Ev?",
+    "items": {
+      "one": "Tüm parseller imarlı, ruhsatlı ve tapuya hazır",
+      "two": "Belediye onaylı yapı ruhsatı süreçleri tarafımızca yürütülür",
+      "three": "Altyapısı (yol, su, elektrik) tamamlanmış projeler",
+      "four": "Sakarya'nın 8 ilçesinde 14 farklı proje",
+      "five": "Şeffaf süreç ve profesyonel mimari danışmanlık",
+      "six": "Her bütçeye uygun, kolay ödeme seçenekleri"
+    }
+  },
+  "finalCta": {
+    "title": "Bahçeli Evinize Bugün Adım Atın",
+    "subtitle": "Uzman ekibimiz size en uygun proje ve villa planını bulmak için hazır. Hemen iletişime geçin.",
+    "call": "Hemen Ara",
+    "whatsapp": "WhatsApp'tan Yaz"
+  },
+  "projectsPage": {
+    "title": "Projelerimiz",
+    "subtitle": "Sakarya'nın 8 ilçesinde, doğayla iç içe villa ve bahçeli ev projeleri.",
+    "all": "Tümü",
+    "empty": "Bu bölgede henüz proje bulunmuyor.",
+    "emptyAlt": "Bu bölgede proje bulamayan Trend Ev sincabı",
+    "filterDistrict": "İlçe"
+  },
+  "projectDetail": {
+    "specs": "Proje Özellikleri",
+    "gallery": "Galeri",
+    "floorPlan": "Kat Planı",
+    "location": "Konum",
+    "ctaTitle": "Bu proje ilginizi mi çekti?",
+    "ctaText": "Fiyat, ödeme planı ve müsaitlik için hemen bize ulaşın.",
+    "whatsappMsg": "Merhaba, {project} projesi hakkında bilgi almak istiyorum.",
+    "back": "Tüm Projeler",
+    "otherProjects": "Diğer Projeler",
+    "adaParsel": "Ada - Parsel",
+    "projectArea": "Proje Alanı",
+    "parcelCount": "Parsel Sayısı",
+    "parcelArea": "Parsel Alanları",
+    "priceRange": "Fiyat Aralığı",
+    "toSakarya": "Sakarya'ya",
+    "toIstanbul": "İstanbul'a",
+    "minutes": "dk",
+    "hours": "saat",
+    "distance": "Mesafe",
+    "escape": {
+      "eyebrow": "Yaşam Deneyimi",
+      "title": "Şehrin Gürültüsünden, Doğanın Sessizliğine",
+      "subtitle": "Trafiğin kornasını değil kuşların sesini, komşunun televizyonunu değil rüzgarın yapraklardaki hışırtısını duyacağınız bir sabah düşünün.",
+      "cityLabel": "Şehirde",
+      "hereLabel": "Burada",
+      "items": {
+        "one": { "city": "Trafik gürültüsü, korna sesleri", "here": "Kuş cıvıltısı, rüzgarın sesi" },
+        "two": { "city": "Beton gri, kalabalık sokaklar", "here": "Yeşilin bin tonu, geniş ufuklar" },
+        "three": { "city": "İnce duvarlar, komşu sesleri", "here": "Kendi bahçenizin mahremiyeti" },
+        "four": { "city": "Otopark arayışı, site kuralları", "here": "Kapınızın önünde kendi bahçeniz" }
+      },
+      "proximity": "İstanbul'a {hours} saat, Sakarya'ya {minutes} dakika — ama dünyalar kadar uzak bir huzur.",
+      "cta": "Bu Sessizliği Kendi Gözlerinizle Görün"
+    }
+  },
+  "rooms": {
+    "room": "Oda",
+    "bedroom": "Yatak Odası",
+    "livingRoom": "Salon",
+    "kitchen": "Mutfak",
+    "bathroom": "Banyo",
+    "masterBathroom": "Ebeveyn Banyosu",
+    "dressingRoom": "Giyinme Odası",
+    "hall": "Hol",
+    "veranda": "Veranda",
+    "terrace": "Teras",
+    "groundFloor": "Zemin Kat",
+    "firstFloor": "1. Kat",
+    "roofFloor": "Çatı Katı"
+  },
+  "about": {
+    "eyebrow": "Hakkımızda",
+    "title": "Doğal, Sade ve Yeşillikler İçinde Bir Yaşam Hayali",
+    "founder": "Halil İbrahim Demirel",
+    "founderRole": "TrendArsa & TrendEv Kurucusu",
+    "lead": "TrendEv, TrendArsa Yatırım Ofisi'nin \"Arsa Sizden, Ev Bizden\" sisteminin bahçeli ev ve villa projelerini bir araya getiren kardeş markasıdır.",
+    "p1": "İstanbul'da beton yığınları ve kalabalık içerisinde 25 yıl yaşadıktan sonra 2015 yılında Sakarya'ya yerleşen kurucumuz Halil İbrahim Demirel, aradığı şeyin çok basit olduğunu fark etti: doğal, sade ve yeşillikler içerisinde bir hayat sürdürmek.",
+    "p2": "Sakarya'nın kırsal yerleşim alanlarında imarlı arsaları alıyor, projelerini çiziyor, yapı ruhsatlarını alıyor ve tüm resmi süreçleri tamamlayarak kat irtifakı tapularını hazır hale getiriyoruz. Aynı zamanda altyapı, site içi yol ve parsel düzenlemelerini de gerçekleştiriyoruz.",
+    "p3": "Sizinle beraber 20'den fazla noktada bulunan bu projeleri geziyor, arsanızı seçiyor, mimarımızla beraber eviniz planı üzerinde çalışıyor ve son olarak bütçenize uygun bir ödeme modeli oluşturarak tapunuzu teslim ediyoruz.",
+    "missionTitle": "Misyonumuz",
+    "mission": "İnsanımızı, şehir hayatının sunduğu imkânlardan koparmadan, doğanın iyileştirici gücüyle yeniden buluşturmak amacıyla Sakarya'nın kırsalında, güvenli, sürdürülebilir ve doğayla uyumlu modern yaşam alanları oluşturmak.",
+    "visionTitle": "Vizyonumuz",
+    "vision": "Geleceği betonla değil; toprakla, doğayla ve huzurla inşa eden bir yaklaşımın öncüsü olarak Türkiye'de \"doğa odaklı yaşam\" denildiğinde ilk akla gelen ve güvenilen marka olmak."
+  },
+  "whyPage": {
+    "title": "Neden TrendEv?",
+    "subtitle": "Arsa sizden, ev bizden — hiçbir risk almadan, tapusu cebinizde, aylık taksitlerle hayalinizdeki bahçeli eve ulaşın.",
+    "faqTitle": "Sıkça Sorulan Sorular",
+    "faq": {
+      "q1": "Arsalar imarlı ve ruhsatlı mı?",
+      "a1": "Evet. Tüm projelerimizdeki parseller imarlıdır; yapı ruhsatları tarafımızca alınır ve kat irtifakı tapusu hazır hale getirilir.",
+      "q2": "Evin projesini ben mi seçiyorum?",
+      "a2": "Evet. Arsanızı seçtikten sonra mimarımızla birlikte eviniz planı üzerinde çalışırsınız.",
+      "q3": "Kolay ödeme / taksit imkânı var mı?",
+      "a3": "Evet. Bütçenize uygun esnek ödeme planları sunuyoruz. Detaylar için bizimle iletişime geçebilirsiniz.",
+      "q4": "İnşaatı başka bir firmayla da yapabilir miyim?",
+      "a4": "Bazı projelerimizde altyapısı ve ruhsatı hazır arsayı teslim aldıktan sonra dilediğiniz firmayla da inşaata geçebilirsiniz."
+    }
+  },
+  "contact": {
+    "title": "İletişim",
+    "subtitle": "Sorularınız için uzman ekibimiz bir telefon uzağınızda.",
+    "phone": "Telefon",
+    "whatsapp": "WhatsApp",
+    "email": "E-posta",
+    "address": "Adres",
+    "social": "Sosyal Medya",
+    "hours": "Çalışma Saatleri",
+    "hoursValue": "Hafta içi 09:00 – 18:00",
+    "whatsappMsg": "Merhaba, TrendEv ev projeleriniz hakkında bilgi almak istiyorum."
+  },
+  "footer": {
+    "tagline": "Sakarya'da doğayla iç içe, ruhsatlı ve tapu güvenceli bahçeli ev projeleri.",
+    "explore": "Keşfet",
+    "corporate": "Kurumsal",
+    "contact": "İletişim",
+    "rights": "Tüm hakları saklıdır.",
+    "madeWith": "Doğayla iç içe bir yaşam."
+  },
+  "notFound": {
+    "title": "Sayfa Bulunamadı",
+    "text": "Aradığınız sayfa taşınmış veya kaldırılmış olabilir.",
+    "home": "Ana Sayfaya Dön",
+    "mascotAlt": "Elinde büyüteçle proje arayan Trend Ev maskotu sincap"
+  }
+}

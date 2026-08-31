@@ -1,0 +1,226 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "why": "Why TrendEv?",
+    "contact": "Contact",
+    "call": "Call Now",
+    "whatsapp": "WhatsApp"
+  },
+  "common": {
+    "brand": "Trend Ev",
+    "slogan": "Make Your Place in the Heart of Nature",
+    "getInfo": "Get Info",
+    "callNow": "Call Now",
+    "whatsappCta": "Message on WhatsApp",
+    "viewAll": "View All",
+    "viewDetails": "View Details",
+    "readMore": "Read More",
+    "available": "Available",
+    "reserved": "Reserved",
+    "sold": "Sold",
+    "parcels": "plots",
+    "area": "Area",
+    "price": "Price",
+    "region": "Location",
+    "district": "District"
+  },
+  "hero": {
+    "eyebrow": "Sakarya • Land From You, Home From Us",
+    "title": "Make Your Place in the Heart of Nature",
+    "subtitle": "In Sakarya's rural settlements: zoned land, architect-designed, permit-ready, garden villa projects. Title-deed secured, easy payment plans.",
+    "ctaPrimary": "Explore Projects",
+    "ctaSecondary": "Call Now",
+    "scroll": "Scroll down"
+  },
+  "stats": {
+    "title": "Trend Ev in Numbers",
+    "projects": "Home Projects",
+    "projectsValue": "14",
+    "districts": "Districts",
+    "districtsValue": "8",
+    "parcels": "Villa Plots",
+    "parcelsValue": "177+",
+    "secure": "Assurance",
+    "secureValue": "Titled & Permitted"
+  },
+  "projectsMap": {
+    "eyebrow": "Across Sakarya",
+    "title": "Our Projects on the Map",
+    "subtitle": "Garden home opportunities awaiting you at 14 different locations across 8 districts of Sakarya, amid nature.",
+    "alt": "Trend Ev project locations on the map of Sakarya"
+  },
+  "featured": {
+    "eyebrow": "Featured Projects",
+    "title": "Homeownership Opportunities in the Heart of Nature",
+    "subtitle": "Some of our villa projects across 8 districts of Sakarya, set amid nature."
+  },
+  "why": {
+    "eyebrow": "Why TrendEv?",
+    "title": "Land From You, Home From Us — We Take On the Risk",
+    "subtitle": "From zoning to permits, from design to title deed — we run the whole process; you simply choose your home.",
+    "mascotAlt": "Trend Ev mascot squirrel",
+    "items": {
+      "value": {
+        "title": "Own a Home at Cost Price",
+        "text": "With no middleman margin, you own your garden villa at the cost of the land and construction."
+      },
+      "secure": {
+        "title": "Permitted & Title-Deed Secured",
+        "text": "Plots with building permits obtained and floor-ownership deeds prepared give you official assurance."
+      },
+      "infra": {
+        "title": "Infrastructure Ready",
+        "text": "Roads, water, electricity and on-site arrangements are complete — construction can start right away."
+      },
+      "payment": {
+        "title": "Easy Payment",
+        "text": "With a payment plan tailored to your budget, reach your dream garden home through monthly installments."
+      }
+    }
+  },
+  "steps": {
+    "eyebrow": "How It Works",
+    "title": "Get Your Garden Home in 5 Steps",
+    "items": {
+      "one": { "title": "Choose Your Land", "text": "Tour our projects across 20+ locations together and choose the plot that suits you." },
+      "two": { "title": "Design Your Home", "text": "Work with our architect on your home's floor plan." },
+      "three": { "title": "Permit & Title Deed", "text": "We obtain the building permit and prepare the floor-ownership deed." },
+      "four": { "title": "Payment Plan", "text": "A payment model suited to your budget is built together." },
+      "five": { "title": "Get Your Keys", "text": "Deed in hand, start living peacefully in your new home." }
+    }
+  },
+  "trust": {
+    "eyebrow": "Assurance",
+    "title": "Why Trend Ev?",
+    "items": {
+      "one": "All plots are zoned, permitted and title-deed ready",
+      "two": "Municipality-approved building permit processes handled by us",
+      "three": "Projects with completed infrastructure (road, water, electricity)",
+      "four": "14 different projects across 8 districts of Sakarya",
+      "five": "Transparent process and professional architectural guidance",
+      "six": "Easy payment options for every budget"
+    }
+  },
+  "finalCta": {
+    "title": "Take a Step Toward Your Garden Home Today",
+    "subtitle": "Our expert team is ready to help you find the right project and villa plan. Get in touch now.",
+    "call": "Call Now",
+    "whatsapp": "Message on WhatsApp"
+  },
+  "projectsPage": {
+    "title": "Our Projects",
+    "subtitle": "Villa and garden home projects amid nature, across 8 districts of Sakarya.",
+    "all": "All",
+    "empty": "No projects in this district yet.",
+    "emptyAlt": "Trend Ev squirrel finding no projects in this district",
+    "filterDistrict": "District"
+  },
+  "projectDetail": {
+    "specs": "Project Details",
+    "gallery": "Gallery",
+    "floorPlan": "Floor Plan",
+    "location": "Location",
+    "ctaTitle": "Interested in this project?",
+    "ctaText": "Contact us now for pricing, payment plans and availability.",
+    "whatsappMsg": "Hello, I'd like information about the {project} project.",
+    "back": "All Projects",
+    "otherProjects": "Other Projects",
+    "adaParsel": "Block - Parcel",
+    "projectArea": "Project Area",
+    "parcelCount": "Number of Plots",
+    "parcelArea": "Plot Areas",
+    "priceRange": "Price Range",
+    "toSakarya": "To Sakarya",
+    "toIstanbul": "To Istanbul",
+    "minutes": "min",
+    "hours": "hr",
+    "distance": "Distance",
+    "escape": {
+      "eyebrow": "The Lifestyle",
+      "title": "From City Noise to Nature's Silence",
+      "subtitle": "Imagine a morning where you hear birdsong instead of car horns, and the rustle of leaves in the wind instead of your neighbor's TV.",
+      "cityLabel": "In the City",
+      "hereLabel": "Here",
+      "items": {
+        "one": { "city": "Traffic noise, honking horns", "here": "Birdsong, the sound of the wind" },
+        "two": { "city": "Concrete grey, crowded streets", "here": "A thousand shades of green, wide horizons" },
+        "three": { "city": "Thin walls, neighbor noise", "here": "The privacy of your own garden" },
+        "four": { "city": "Hunting for parking, site rules", "here": "Your own garden right at your door" }
+      },
+      "proximity": "{hours} hr to Istanbul, {minutes} min to Sakarya — yet a world of peace away.",
+      "cta": "See This Peace With Your Own Eyes"
+    }
+  },
+  "rooms": {
+    "room": "Room",
+    "bedroom": "Bedroom",
+    "livingRoom": "Living Room",
+    "kitchen": "Kitchen",
+    "bathroom": "Bathroom",
+    "masterBathroom": "Master Bathroom",
+    "dressingRoom": "Dressing Room",
+    "hall": "Hall",
+    "veranda": "Veranda",
+    "terrace": "Terrace",
+    "groundFloor": "Ground Floor",
+    "firstFloor": "1st Floor",
+    "roofFloor": "Attic Floor"
+  },
+  "about": {
+    "eyebrow": "About Us",
+    "title": "A Dream of a Natural, Simple Life Amid Greenery",
+    "founder": "Halil İbrahim Demirel",
+    "founderRole": "Founder of TrendArsa & TrendEv",
+    "lead": "TrendEv is the sister brand of TrendArsa Investment Office's \"Land From You, Home From Us\" system, bringing together garden home and villa projects.",
+    "p1": "After 25 years amid the concrete and crowds of Istanbul, our founder Halil İbrahim Demirel settled in Sakarya in 2015 and realized what he was looking for was simple: a natural, simple life amid greenery.",
+    "p2": "We acquire zoned land in Sakarya's rural settlements, design the projects, obtain building permits, and complete all official processes to prepare floor-ownership deeds. We also carry out infrastructure, on-site roads and plot arrangements.",
+    "p3": "Together with you, we tour these projects across 20+ locations, help you choose your plot, work with our architect on your home's plan, and finally build a payment model suited to your budget before handing over your title deed.",
+    "missionTitle": "Our Mission",
+    "mission": "To reconnect people with nature's healing power, without cutting them off from the conveniences of city life, by creating safe, sustainable, nature-in-harmony modern living spaces in rural Sakarya.",
+    "visionTitle": "Our Vision",
+    "vision": "To be the pioneer of an approach that builds the future not with concrete but with soil, nature and peace — the first and most trusted name that comes to mind when \"nature-focused living\" is mentioned in Turkey."
+  },
+  "whyPage": {
+    "title": "Why TrendEv?",
+    "subtitle": "Land from you, home from us — reach your dream garden home through monthly installments, deed in hand, with no risk.",
+    "faqTitle": "Frequently Asked Questions",
+    "faq": {
+      "q1": "Are the plots zoned and permitted?",
+      "a1": "Yes. All plots in our projects are zoned; building permits are obtained by us and the floor-ownership deed is prepared.",
+      "q2": "Do I choose the home's design?",
+      "a2": "Yes. After choosing your plot, you work with our architect on your home's floor plan.",
+      "q3": "Is there an easy payment / installment option?",
+      "a3": "Yes. We offer flexible payment plans suited to your budget. Contact us for details.",
+      "q4": "Can I have construction done by another company?",
+      "a4": "In some of our projects, once you receive the plot with infrastructure and permits ready, you can proceed to construction with any firm you choose."
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Our expert team is just a phone call away for your questions.",
+    "phone": "Phone",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "address": "Address",
+    "social": "Social Media",
+    "hours": "Working Hours",
+    "hoursValue": "Weekdays 09:00 – 18:00",
+    "whatsappMsg": "Hello, I'd like information about your TrendEv home projects."
+  },
+  "footer": {
+    "tagline": "Permitted, title-deed secured garden home projects amid nature in Sakarya.",
+    "explore": "Explore",
+    "corporate": "Corporate",
+    "contact": "Contact",
+    "rights": "All rights reserved.",
+    "madeWith": "A life amid nature."
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "text": "The page you're looking for may have moved or been removed.",
+    "home": "Back to Home",
+    "mascotAlt": "Trend Ev mascot squirrel searching with a magnifying glass"
+  }
+}
