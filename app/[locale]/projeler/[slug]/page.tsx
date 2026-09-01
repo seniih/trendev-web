@@ -20,6 +20,7 @@ import { site, whatsappLink, telLink } from "@/data/site";
 import { formatPriceTRY, cn } from "@/lib/utils";
 import { imageExists } from "@/lib/images";
 import { Container, Section, Badge, buttonClass, SectionHeading, GrainOverlay } from "@/components/ui";
+import { PageHeader } from "@/components/PageHeader";
 import { VideoPlayer } from "@/components/VideoPlayer";
 import { VillaCard } from "@/components/VillaCard";
 import { ImagePlaceholder } from "@/components/ImagePlaceholder";
@@ -87,162 +88,166 @@ export default async function VillaDetail({
 
   return (
     <>
-      <div className="pt-24 sm:pt-28">
-        <Section className="bg-cream !pt-8 !pb-10">
-          <Container>
-            <Link
-              href="/projeler"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-forest-700 transition-colors hover:text-leaf-800"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              {t("back")}
-            </Link>
+      <PageHeader
+        eyebrow={`${project.neighborhood} / ${project.district} · ${project.city}`}
+        title={project.title[locale]}
+        subtitle={project.excerpt[locale]}
+      />
 
-            <div className="mt-6 grid gap-10 lg:grid-cols-[1.4fr_1fr]">
-              {/* Sol: medya + açıklama */}
-              <div>
-                {imageExists(project.poster) ? (
-                  <VideoPlayer poster={project.poster} label={project.title[locale]} />
-                ) : (
-                  <div className="relative aspect-video w-full overflow-hidden rounded-2xl">
-                    <ImagePlaceholder path={project.poster} />
-                  </div>
-                )}
+      <Section className="bg-cream !pt-10 !pb-10">
+        <Container>
+          <Link
+            href="/projeler"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-forest-700 transition-colors hover:text-leaf-800"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            {t("back")}
+          </Link>
 
-                {project.highlights[locale].length > 0 && (
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {project.highlights[locale].map((h) => (
-                      <Badge key={h} tone="green">
-                        {h}
-                      </Badge>
-                    ))}
-                  </div>
-                )}
-
-                {/* Kat Planı */}
-                <div className="mt-10">
-                  <h2 className="font-display text-xl font-semibold text-forest-900">
-                    {t("floorPlan")}
-                  </h2>
-                  <div
-                    className={cn(
-                      "mt-4 grid gap-4",
-                      project.floors.length > 1 ? "sm:grid-cols-2" : "",
-                    )}
-                  >
-                    {project.floors.map((floor) => (
-                      <div
-                        key={floor.key}
-                        className="rounded-xl border border-forest-900/10 bg-sand/60 p-5"
-                      >
-                        <div className="flex items-baseline justify-between">
-                          <h3 className="font-display font-semibold text-forest-900">
-                            {r(floorLabelKey[floor.key])}
-                          </h3>
-                          <span className="text-sm font-medium text-leaf-800">
-                            {floor.areaM2} m²
-                          </span>
-                        </div>
-                        <ul className="mt-3 space-y-1.5 text-sm text-ink-soft">
-                          {floor.rooms.map((room, i) => (
-                            <li key={i} className="flex items-center gap-2">
-                              <Check className="h-3.5 w-3.5 text-leaf-600" />
-                              {room.count} {r(room.key)}
-                            </li>
-                          ))}
-                          {floor.outdoor && (
-                            <li className="flex items-center gap-2">
-                              <Check className="h-3.5 w-3.5 text-leaf-600" />
-                              {floor.outdoor.areaM2 ? `${floor.outdoor.areaM2} m² ` : ""}
-                              {r(floor.outdoor.kind)}
-                            </li>
-                          )}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
+          <div className="mt-6 grid gap-10 lg:grid-cols-[1.4fr_1fr]">
+            {/* Sol: medya + açıklama */}
+            <div>
+              {imageExists(project.poster) ? (
+                <VideoPlayer poster={project.poster} label={project.title[locale]} />
+              ) : (
+                <div className="relative aspect-video w-full overflow-hidden rounded-2xl">
+                  <ImagePlaceholder path={project.poster} />
                 </div>
+              )}
 
-                {project.gallery.length > 0 && (
-                  <div className="mt-10">
-                    <h2 className="font-display text-xl font-semibold text-forest-900">
-                      {t("gallery")}
-                    </h2>
-                    <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                      {project.gallery.map((img, i) => (
-                        <Reveal key={i} delay={i * 0.06}>
-                          <div className="group relative aspect-[4/3] overflow-hidden rounded-xl">
-                            {imageExists(img) ? (
-                              <Image
-                                src={img}
-                                alt={`${project.title[locale]} ${i + 1}`}
-                                fill
-                                sizes="(max-width: 768px) 100vw, 40vw"
-                                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                              />
-                            ) : (
-                              <ImagePlaceholder path={img} />
-                            )}
-                          </div>
-                        </Reveal>
-                      ))}
+              {project.highlights[locale].length > 0 && (
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {project.highlights[locale].map((h) => (
+                    <Badge key={h} tone="green">
+                      {h}
+                    </Badge>
+                  ))}
+                </div>
+              )}
+
+              {/* Kat Planı */}
+              <div className="mt-10">
+                <h2 className="font-display text-xl font-semibold text-forest-900">
+                  {t("floorPlan")}
+                </h2>
+                <div
+                  className={cn(
+                    "mt-4 grid gap-4",
+                    project.floors.length > 1 ? "sm:grid-cols-2" : "",
+                  )}
+                >
+                  {project.floors.map((floor) => (
+                    <div
+                      key={floor.key}
+                      className="rounded-xl border border-forest-900/10 bg-sand/60 p-5"
+                    >
+                      <div className="flex items-baseline justify-between">
+                        <h3 className="font-display font-semibold text-forest-900">
+                          {r(floorLabelKey[floor.key])}
+                        </h3>
+                        <span className="text-sm font-medium text-leaf-800">
+                          {floor.areaM2} m²
+                        </span>
+                      </div>
+                      <ul className="mt-3 space-y-1.5 text-sm text-ink-soft">
+                        {floor.rooms.map((room, i) => (
+                          <li key={i} className="flex items-center gap-2">
+                            <Check className="h-3.5 w-3.5 text-leaf-600" />
+                            {room.count} {r(room.key)}
+                          </li>
+                        ))}
+                        {floor.outdoor && (
+                          <li className="flex items-center gap-2">
+                            <Check className="h-3.5 w-3.5 text-leaf-600" />
+                            {floor.outdoor.areaM2 ? `${floor.outdoor.areaM2} m² ` : ""}
+                            {r(floor.outdoor.kind)}
+                          </li>
+                        )}
+                      </ul>
                     </div>
-                  </div>
-                )}
-
-                <div className="mt-10 space-y-4 text-lg leading-relaxed text-ink-soft">
-                  {project.description[locale].map((p, i) => (
-                    <p key={i}>{p}</p>
                   ))}
                 </div>
               </div>
 
-              {/* Sağ: özet + CTA (yapışkan) */}
-              <aside className="lg:sticky lg:top-28 lg:self-start">
-                <div className="relative overflow-hidden rounded-2xl border border-forest-900/10 bg-cream p-6 shadow-cine">
-                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-leaf-600 via-leaf-500 to-leaf-400" />
-                  <h1 className="font-display text-2xl font-semibold leading-snug text-forest-900">
-                    {project.title[locale]}
-                  </h1>
-                  <p className="mt-4 font-display text-2xl font-semibold text-forest-900">
-                    {formatPriceTRY(project.priceRangeTRY.min)}
-                    <span className="text-base font-normal text-ink-soft"> +</span>
-                  </p>
-
-                  <dl className="mt-6 space-y-3 border-t border-forest-900/10 pt-6">
-                    {specs.map(({ icon: Icon, label, value }) => (
-                      <div key={label} className="flex items-start justify-between gap-3 text-sm">
-                        <dt className="flex items-center gap-2 text-ink-soft">
-                          <Icon className="h-4 w-4 shrink-0 text-leaf-600" />
-                          {label}
-                        </dt>
-                        <dd className="text-right font-medium text-forest-900">{value}</dd>
-                      </div>
+              {project.gallery.length > 0 && (
+                <div className="mt-10">
+                  <h2 className="font-display text-xl font-semibold text-forest-900">
+                    {t("gallery")}
+                  </h2>
+                  <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                    {project.gallery.map((img, i) => (
+                      <Reveal key={i} delay={i * 0.06}>
+                        <div className="group relative aspect-[4/3] overflow-hidden rounded-xl">
+                          {imageExists(img) ? (
+                            <Image
+                              src={img}
+                              alt={`${project.title[locale]} ${i + 1}`}
+                              fill
+                              sizes="(max-width: 768px) 100vw, 40vw"
+                              className="object-cover transition-transform duration-700 group-hover:scale-105"
+                            />
+                          ) : (
+                            <ImagePlaceholder path={img} />
+                          )}
+                        </div>
+                      </Reveal>
                     ))}
-                  </dl>
-
-                  <div className="mt-6 space-y-3 border-t border-forest-900/10 pt-6">
-                    <p className="text-sm font-medium text-forest-900">{t("ctaText")}</p>
-                    <a
-                      href={whatsappLink(waMsg)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={buttonClass("gold", "w-full bg-[#25D366] text-white hover:bg-[#20bd5a]")}
-                    >
-                      <WhatsAppIcon className="h-5 w-5" />
-                      {c("whatsappCta")}
-                    </a>
-                    <a href={telLink()} className={buttonClass("primary", "w-full")}>
-                      <Phone className="h-4 w-4" />
-                      {site.phoneDisplay}
-                    </a>
                   </div>
                 </div>
-              </aside>
+              )}
+
+              <div className="mt-10 space-y-4 text-lg leading-relaxed text-ink-soft">
+                {project.description[locale].map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
             </div>
-          </Container>
-        </Section>
-      </div>
+
+            {/* Sağ: özet + CTA (yapışkan) */}
+            <aside className="lg:sticky lg:top-28 lg:self-start">
+              <div className="relative overflow-hidden rounded-2xl border border-forest-900/10 bg-cream p-6 shadow-cine">
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-leaf-600 via-leaf-500 to-leaf-400" />
+                <h2 className="font-display text-2xl font-semibold leading-snug text-forest-900">
+                  {project.title[locale]}
+                </h2>
+                <p className="mt-4 font-display text-2xl font-semibold text-forest-900">
+                  {formatPriceTRY(project.priceRangeTRY.min)}
+                  <span className="text-base font-normal text-ink-soft"> +</span>
+                </p>
+
+                <dl className="mt-6 space-y-3 border-t border-forest-900/10 pt-6">
+                  {specs.map(({ icon: Icon, label, value }) => (
+                    <div key={label} className="flex items-start justify-between gap-3 text-sm">
+                      <dt className="flex items-center gap-2 text-ink-soft">
+                        <Icon className="h-4 w-4 shrink-0 text-leaf-600" />
+                        {label}
+                      </dt>
+                      <dd className="text-right font-medium text-forest-900">{value}</dd>
+                    </div>
+                  ))}
+                </dl>
+
+                <div className="mt-6 space-y-3 border-t border-forest-900/10 pt-6">
+                  <p className="text-sm font-medium text-forest-900">{t("ctaText")}</p>
+                  <a
+                    href={whatsappLink(waMsg)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={buttonClass("gold", "w-full bg-[#25D366] text-white hover:bg-[#20bd5a]")}
+                  >
+                    <WhatsAppIcon className="h-5 w-5" />
+                    {c("whatsappCta")}
+                  </a>
+                  <a href={telLink()} className={buttonClass("primary", "w-full")}>
+                    <Phone className="h-4 w-4" />
+                    {site.phoneDisplay}
+                  </a>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </Container>
+      </Section>
 
       {/* Şehrin gürültüsünden doğanın sessizliğine */}
       <Section className="relative overflow-hidden bg-forest-950 text-cream">
