@@ -5,8 +5,9 @@ import { routing } from "@/i18n/routing";
 
 const staticPaths = ["", "/projeler", "/neden-trendev", "/hakkimizda", "/iletisim"];
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const dynamicPaths = getVillaProjects().map((p) => `/projeler/${p.slug}`);
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const projects = await getVillaProjects();
+  const dynamicPaths = projects.map((p) => `/projeler/${p.slug}`);
   const allPaths = [...staticPaths, ...dynamicPaths];
 
   const entries: MetadataRoute.Sitemap = [];

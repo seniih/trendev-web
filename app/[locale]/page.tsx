@@ -49,7 +49,7 @@ export default async function HomePage({
   const locale = rawLocale as Locale;
 
   const t = await getTranslations();
-  const featured = getFeaturedVillaProjects();
+  const featured = await getFeaturedVillaProjects();
 
   // Hero videosu eklendiğinde: videoSrc="/videos/hero.mp4"
   return (

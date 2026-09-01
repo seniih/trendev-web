@@ -28,9 +28,10 @@ import { Reveal } from "@/components/Reveal";
 import { routing } from "@/i18n/routing";
 import { WhatsAppIcon } from "@/components/FloatingContact";
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const projects = await getVillaProjects();
   return routing.locales.flatMap((locale) =>
-    getVillaProjects().map((p) => ({ locale, slug: p.slug })),
+    projects.map((p) => ({ locale, slug: p.slug })),
   );
 }
 
@@ -40,13 +41,13 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const project = getVillaProject(slug);
+  const project = await getVillaProject(slug);
   if (!project) return {};
   const l = locale as Locale;
   return {
     title: project.title[l],
     description: project.excerpt[l],
-    openGraph: { images: [project.poster] },
+    openGraph: project.poster ? { images: [project.poster] } : undefined,
   };
 }
 
@@ -60,13 +61,14 @@ export default async function VillaDetail({
   const { locale: rawLocale, slug } = await params;
   setRequestLocale(rawLocale);
   const locale = rawLocale as Locale;
-  const project = getVillaProject(slug);
+  const project = await getVillaProject(slug);
   if (!project) notFound();
 
   const t = await getTranslations("projectDetail");
   const c = await getTranslations("common");
   const r = await getTranslations("rooms");
-  const others = getVillaProjects().filter((p) => p.slug !== slug).slice(0, 3);
+  const allProjects = await getVillaProjects();
+  const others = allProjects.filter((p) => p.slug !== slug).slice(0, 3);
   const waMsg = t("whatsappMsg", { project: project.title[locale] });
 
   const parcelArea =

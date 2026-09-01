@@ -45,7 +45,7 @@ export function VillaCard({
       <div className="relative aspect-[4/3] overflow-hidden">
         {posterExists ? (
           <Image
-            src={project.poster}
+            src={project.poster!}
             alt={project.title[locale]}
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
