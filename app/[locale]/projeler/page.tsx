@@ -31,7 +31,7 @@ export default async function ProjectsPage({
   setRequestLocale(rawLocale);
   const locale = rawLocale as Locale;
   const t = await getTranslations("projectsPage");
-  const projects = getVillaProjects();
+  const projects = await getVillaProjects();
   const posterExists = Object.fromEntries(
     projects.map((p) => [p.slug, imageExists(p.poster)]),
   );

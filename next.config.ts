@@ -3,9 +3,16 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const withNextIntl = createNextIntlPlugin();
 
+// Villa proje görselleri Supabase'den gelen R2 URL'leri — site görselleri
+// (hero, ikonlar vb.) hâlâ public/images altından yerel servis ediliyor.
+const r2Hostname = process.env.R2_PUBLIC_BASE_URL
+  ? new URL(process.env.R2_PUBLIC_BASE_URL).hostname
+  : undefined;
+
 const nextConfig: NextConfig = {
-  // Tüm görseller public/images altından yerel olarak servis edilir —
-  // dış (uzak) görsel kaynağı kullanılmıyor.
+  images: {
+    remotePatterns: r2Hostname ? [{ protocol: "https", hostname: r2Hostname }] : [],
+  },
 };
 
 export default withNextIntl(nextConfig);
