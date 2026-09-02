@@ -6,10 +6,17 @@ import { createClient } from "@supabase/supabase-js";
  * (bkz. trendarsa-app/supabase/migrations). İstemciye hiç sızmaz çünkü
  * site tamamen statik/sunucu tarafında render ediliyor.
  */
-export const supabase = createClient(
-  process.env.SUPABASE_URL!,
-  process.env.SUPABASE_ANON_KEY!,
-);
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error(
+    "SUPABASE_URL / SUPABASE_ANON_KEY eksik — build ortamının (ör. Cloudflare Pages " +
+      "Settings > Environment variables) bu değişkenleri tanımlaması gerekiyor. Bkz. .env.example.",
+  );
+}
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 export function r2Url(storageKey: string | null | undefined): string | null {
   if (!storageKey) return null;
