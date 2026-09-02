@@ -7,8 +7,8 @@
  * eklenecek), bu yüzden `cover_image_key`/`project_images` hiç dokunulmaz.
  *
  * Kullanım:
- *   cp .env.example .env.local   # SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, SEED_ADMIN_ID doldurun
- *   npx tsx scripts/seed-supabase.ts
+ *   cp .env.example .env   # SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, SEED_ADMIN_ID doldurun
+ *   npm run seed
  *
  * SEED_ADMIN_ID: mevcut bir admin hesabının profiles.id'si — Supabase
  * Studio'da `select id, display_name from public.profiles;` ile bulunur.
@@ -21,7 +21,9 @@ import { createClient } from "@supabase/supabase-js";
 import { config } from "dotenv";
 import { villaProjects } from "./seed-data/villas-source";
 
+// .env.local varsa onu, yoksa (ör. sadece .env dolduranlar için) .env'i yükle.
 config({ path: ".env.local" });
+config({ path: ".env" });
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
