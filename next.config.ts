@@ -9,6 +9,11 @@ const r2Hostname = process.env.R2_PUBLIC_BASE_URL
   ? new URL(process.env.R2_PUBLIC_BASE_URL).hostname
   : undefined;
 
+// Cloudflare Pages bazı preset'lerde NEXT_EXPORT=1 inject eder ve bu
+// next.config.ts'deki output: "standalone" ayarını override eder.
+// Bunu silerek Next.js'in config'i doğru okumasını sağlıyoruz.
+delete process.env.NEXT_EXPORT;
+
 const nextConfig: NextConfig = {
   output: "standalone",
   images: {
