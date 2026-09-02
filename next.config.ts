@@ -10,9 +10,8 @@ const r2Hostname = process.env.R2_PUBLIC_BASE_URL
   : undefined;
 
 const nextConfig: NextConfig = {
-  output: "export",
+  output: "standalone",
   images: {
-    unoptimized: true,
     remotePatterns: r2Hostname ? [{ protocol: "https", hostname: r2Hostname }] : [],
   },
 };
