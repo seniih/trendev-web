@@ -3,6 +3,8 @@ import { site } from "@/data/site";
 import { getVillaProjects } from "@/data/villas";
 import { routing } from "@/i18n/routing";
 
+export const dynamic = "force-static";
+
 const staticPaths = ["", "/projeler", "/neden-trendev", "/hakkimizda", "/iletisim"];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
