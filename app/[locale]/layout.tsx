@@ -4,7 +4,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { Poppins } from "next/font/google";
 import { routing } from "@/i18n/routing";
-import { site } from "@/data/site";
+import { getSiteInfo } from "@/data/site-content";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FloatingContact } from "@/components/FloatingContact";
@@ -22,15 +22,18 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
-  title: {
-    default: "Trend Ev — Sakarya Bahçeli Villa Projeleri",
-    template: "%s | Trend Ev",
-  },
-  description:
-    "Sakarya'nın kırsal yerleşim alanlarında; imarlı, ruhsatlı, tapu güvenceli ve altyapısı hazır bahçeli villa projeleri. Arsa sizden, ev bizden.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const site = await getSiteInfo();
+  return {
+    metadataBase: new URL(site.url),
+    title: {
+      default: `${site.name} — Sakarya Bahçeli Villa Projeleri`,
+      template: `%s | ${site.name}`,
+    },
+    description:
+      "Sakarya'nın kırsal yerleşim alanlarında; imarlı, ruhsatlı, tapu güvenceli ve altyapısı hazır bahçeli villa projeleri. Arsa sizden, ev bizden.",
+  };
+}
 
 export default async function LocaleLayout({
   children,
@@ -45,6 +48,8 @@ export default async function LocaleLayout({
   }
   setRequestLocale(locale);
 
+  const site = await getSiteInfo();
+
   return (
     <html
       lang={locale}
@@ -52,10 +57,10 @@ export default async function LocaleLayout({
     >
       <body className="min-h-full flex flex-col bg-cream text-ink">
         <NextIntlClientProvider>
-          <Navbar />
+          <Navbar site={site} />
           <main className="flex flex-1 flex-col">{children}</main>
-          <Footer />
-          <FloatingContact />
+          <Footer site={site} />
+          <FloatingContact site={site} />
         </NextIntlClientProvider>
         <OrganizationJsonLd />
       </body>

@@ -3,11 +3,12 @@
 import { useEffect, useState } from "react";
 import { Phone } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { site, whatsappLink, telLink } from "@/data/site";
+import { whatsappLink, telLink } from "@/data/site";
+import type { SiteInfo } from "@/data/site-content";
 import { Mascot } from "./Mascot";
 
 /** Sağ-alt sabit WhatsApp + tıkla-ara butonları (mobil öncelikli). */
-export function FloatingContact() {
+export function FloatingContact({ site }: { site: SiteInfo }) {
   const t = useTranslations("contact");
   const [show, setShow] = useState(false);
 
@@ -31,14 +32,14 @@ export function FloatingContact() {
         className="hidden w-14 -mb-1 mr-1 pointer-events-none drop-shadow-[0_8px_16px_rgba(6,26,16,0.35)] sm:block"
       />
       <a
-        href={telLink()}
+        href={telLink(site.phoneIntl)}
         aria-label={t("phone")}
         className="flex h-12 w-12 items-center justify-center rounded-full bg-leaf-500 text-forest-950 shadow-[var(--shadow-leaf)] transition-transform hover:scale-105"
       >
         <Phone className="h-5 w-5" />
       </a>
       <a
-        href={whatsappLink(t("whatsappMsg"))}
+        href={whatsappLink(t("whatsappMsg"), site.whatsapp)}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp"

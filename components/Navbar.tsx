@@ -4,12 +4,13 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Menu, X, Phone } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
-import { site, telLink } from "@/data/site";
+import { telLink } from "@/data/site";
+import type { SiteInfo } from "@/data/site-content";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 import { buttonClass } from "./ui";
 import { cn } from "@/lib/utils";
 
-export function Navbar() {
+export function Navbar({ site }: { site: SiteInfo }) {
   const t = useTranslations("nav");
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -79,7 +80,7 @@ export function Navbar() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <LocaleSwitcher invert={!scrolled} />
-          <a href={telLink()} className={buttonClass("primary", "px-5 py-2.5")}>
+          <a href={telLink(site.phoneIntl)} className={buttonClass("primary", "px-5 py-2.5")}>
             <Phone className="h-4 w-4" />
             {site.phoneDisplay}
           </a>
@@ -115,7 +116,7 @@ export function Navbar() {
             </div>
             <div className="mt-3 flex items-center justify-between gap-3 border-t border-forest-900/10 pt-4">
               <LocaleSwitcher />
-              <a href={telLink()} className={buttonClass("primary", "flex-1")}>
+              <a href={telLink(site.phoneIntl)} className={buttonClass("primary", "flex-1")}>
                 <Phone className="h-4 w-4" />
                 {t("call")}
               </a>
