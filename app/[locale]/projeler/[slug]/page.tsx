@@ -16,7 +16,8 @@ import {
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/data/villas";
 import { getVillaProject, getVillaProjects } from "@/data/villas";
-import { site, whatsappLink, telLink } from "@/data/site";
+import { whatsappLink, telLink } from "@/data/site";
+import { getSiteInfo } from "@/data/site-content";
 import { formatPriceTRY, cn } from "@/lib/utils";
 import { imageExists } from "@/lib/images";
 import { Container, Section, Badge, buttonClass, SectionHeading, GrainOverlay } from "@/components/ui";
@@ -68,6 +69,7 @@ export default async function VillaDetail({
   const c = await getTranslations("common");
   const r = await getTranslations("rooms");
   const allProjects = await getVillaProjects();
+  const site = await getSiteInfo();
   const others = allProjects.filter((p) => p.slug !== slug).slice(0, 3);
   const waMsg = t("whatsappMsg", { project: project.title[locale] });
 
@@ -232,7 +234,7 @@ export default async function VillaDetail({
                 <div className="mt-6 space-y-3 border-t border-forest-900/10 pt-6">
                   <p className="text-sm font-medium text-forest-900">{t("ctaText")}</p>
                   <a
-                    href={whatsappLink(waMsg)}
+                    href={whatsappLink(waMsg, site.whatsapp)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={buttonClass("gold", "w-full bg-[#25D366] text-white hover:bg-[#20bd5a]")}
@@ -240,7 +242,7 @@ export default async function VillaDetail({
                     <WhatsAppIcon className="h-5 w-5" />
                     {c("whatsappCta")}
                   </a>
-                  <a href={telLink()} className={buttonClass("primary", "w-full")}>
+                  <a href={telLink(site.phoneIntl)} className={buttonClass("primary", "w-full")}>
                     <Phone className="h-4 w-4" />
                     {site.phoneDisplay}
                   </a>
@@ -302,7 +304,7 @@ export default async function VillaDetail({
               })}
             </p>
             <a
-              href={whatsappLink(waMsg)}
+              href={whatsappLink(waMsg, site.whatsapp)}
               target="_blank"
               rel="noopener noreferrer"
               className={cn(buttonClass("primary"), "mt-8 inline-flex")}

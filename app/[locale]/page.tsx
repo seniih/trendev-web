@@ -17,7 +17,8 @@ import {
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/data/villas";
 import { getFeaturedVillaProjects } from "@/data/villas";
-import { site, whatsappLink, telLink } from "@/data/site";
+import { whatsappLink, telLink } from "@/data/site";
+import { getSection, getSiteInfo, getStats } from "@/data/site-content";
 import { imageExists } from "@/lib/images";
 import {
   Container,
@@ -49,33 +50,51 @@ export default async function HomePage({
   const locale = rawLocale as Locale;
 
   const t = await getTranslations();
-  const featured = await getFeaturedVillaProjects();
+  const [featured, hero, projectsMap, stats, info] = await Promise.all([
+    getFeaturedVillaProjects(),
+    getSection("hero", locale),
+    getSection("projectsMap", locale),
+    getStats(locale),
+    getSiteInfo(),
+  ]);
+
+  // Admin panelde boş bırakılan alanlar çeviri dosyasındaki değere düşer.
+  const heroImage = hero?.image ?? HERO_IMAGE;
+  const mapImage = projectsMap?.image ?? PROJECTS_MAP_IMAGE;
+  const statItems = stats.length > 0
+    ? stats
+    : [
+        { value: t("stats.projectsValue"), label: t("stats.projects") },
+        { value: t("stats.districtsValue"), label: t("stats.districts") },
+        { value: t("stats.parcelsValue"), label: t("stats.parcels") },
+        { value: t("stats.secureValue"), label: t("stats.secure") },
+      ];
 
   // Hero videosu eklendiğinde: videoSrc="/videos/hero.mp4"
   return (
     <>
       {/* HERO */}
-      <VideoHero poster={HERO_IMAGE} hasPoster={imageExists(HERO_IMAGE)}>
+      <VideoHero poster={heroImage} hasPoster={imageExists(heroImage)}>
         <Container className="pt-20">
           <div className="max-w-3xl">
             <span className="inline-flex items-center gap-2.5 rounded-full border border-cream/20 bg-cream/10 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.22em] text-cream backdrop-blur-md">
               <span className="h-1.5 w-1.5 rounded-full bg-leaf-400 shadow-[0_0_10px_2px_var(--leaf-glow)]" />
-              {t("hero.eyebrow")}
+              {hero?.eyebrow ?? t("hero.eyebrow")}
             </span>
             <h1 className="mt-7 text-[2.6rem] font-semibold leading-[1.03] text-cream sm:text-6xl lg:text-7xl">
-              {t("hero.title")}
+              {hero?.title ?? t("hero.title")}
             </h1>
             <p className="mt-7 max-w-xl text-lg leading-relaxed text-cream/85">
-              {t("hero.subtitle")}
+              {hero?.subtitle ?? t("hero.subtitle")}
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <Link href="/projeler" className={buttonClass("primary")}>
-                {t("hero.ctaPrimary")}
+                {hero?.ctaPrimary ?? t("hero.ctaPrimary")}
                 <ArrowRight className="h-4 w-4" />
               </Link>
-              <a href={telLink()} className={buttonClass("ghost")}>
+              <a href={telLink(info.phoneIntl)} className={buttonClass("ghost")}>
                 <Phone className="h-4 w-4" />
-                {t("hero.ctaSecondary")}
+                {hero?.ctaSecondary ?? t("hero.ctaSecondary")}
               </a>
             </div>
           </div>
@@ -87,22 +106,22 @@ export default async function HomePage({
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-leaf-500/60 to-transparent" />
         <Container>
           <dl className="grid grid-cols-2 divide-forest-900/10 py-10 sm:grid-cols-4 sm:divide-x">
-            <Stat value={t("stats.projectsValue")} label={t("stats.projects")} />
-            <Stat value={t("stats.districtsValue")} label={t("stats.districts")} />
-            <Stat value={t("stats.parcelsValue")} label={t("stats.parcels")} />
-            <Stat value={t("stats.secureValue")} label={t("stats.secure")} />
+            {statItems.map((stat) => (
+              <Stat key={stat.label} value={stat.value} label={stat.label} />
+            ))}
           </dl>
         </Container>
       </div>
 
       {/* PROJECTS MAP */}
+      {projectsMap?.enabled !== false && (
       <Section className="bg-sand">
         <Container>
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <SectionHeading
-              eyebrow={t("projectsMap.eyebrow")}
-              title={t("projectsMap.title")}
-              subtitle={t("projectsMap.subtitle")}
+              eyebrow={projectsMap?.eyebrow ?? t("projectsMap.eyebrow")}
+              title={projectsMap?.title ?? t("projectsMap.title")}
+              subtitle={projectsMap?.subtitle ?? t("projectsMap.subtitle")}
             />
             <Reveal>
               <Link
@@ -110,16 +129,16 @@ export default async function HomePage({
                 className="group block overflow-hidden rounded-2xl border border-forest-900/10 shadow-[0_2px_20px_-12px_rgba(6,26,16,0.25)] transition-all duration-500 hover:-translate-y-1.5 hover:border-leaf-500/40 hover:shadow-cine"
               >
                 <div className="relative aspect-video w-full">
-                  {imageExists(PROJECTS_MAP_IMAGE) ? (
+                  {imageExists(mapImage) ? (
                     <Image
-                      src={PROJECTS_MAP_IMAGE}
-                      alt={t("projectsMap.alt")}
+                      src={mapImage}
+                      alt={projectsMap?.imageAlt ?? t("projectsMap.alt")}
                       fill
                       sizes="(max-width: 1024px) 100vw, 560px"
                       className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105"
                     />
                   ) : (
-                    <ImagePlaceholder path={PROJECTS_MAP_IMAGE} />
+                    <ImagePlaceholder path={mapImage} />
                   )}
                 </div>
               </Link>
@@ -127,6 +146,7 @@ export default async function HomePage({
           </div>
         </Container>
       </Section>
+      )}
 
       {/* FEATURED PROJECTS */}
       <Section id="projeler" className="bg-cream">
@@ -289,7 +309,7 @@ export default async function HomePage({
               <Eyebrow tone="leaf" invert>
                 <span className="inline-flex items-center gap-1.5">
                   <HomeIcon className="h-3.5 w-3.5" />
-                  {site.name}
+                  {info.name}
                 </span>
               </Eyebrow>
             </div>
@@ -299,16 +319,16 @@ export default async function HomePage({
             <p className="mt-5 text-lg text-cream/80">{t("finalCta.subtitle")}</p>
             <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
               <a
-                href={whatsappLink(t("contact.whatsappMsg"))}
+                href={whatsappLink(t("contact.whatsappMsg"), info.whatsapp)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={buttonClass("primary")}
               >
                 {t("finalCta.whatsapp")}
               </a>
-              <a href={telLink()} className={buttonClass("ghost")}>
+              <a href={telLink(info.phoneIntl)} className={buttonClass("ghost")}>
                 <Phone className="h-4 w-4" />
-                {site.phoneDisplay}
+                {info.phoneDisplay}
               </a>
             </div>
           </div>

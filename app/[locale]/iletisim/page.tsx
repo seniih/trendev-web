@@ -3,7 +3,8 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { InstagramIcon, FacebookIcon } from "@/components/BrandIcons";
 import { routing } from "@/i18n/routing";
-import { site, whatsappLink, telLink } from "@/data/site";
+import { whatsappLink, telLink } from "@/data/site";
+import { getSiteInfo } from "@/data/site-content";
 import { Container, Section, buttonClass } from "@/components/ui";
 import { PageHeader } from "@/components/PageHeader";
 import { MapEmbed } from "@/components/MapEmbed";
@@ -32,6 +33,7 @@ export default async function ContactPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("contact");
+  const site = await getSiteInfo();
 
   const rows = [
     {
@@ -97,7 +99,7 @@ export default async function ContactPage({
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a
-                  href={whatsappLink(t("whatsappMsg"))}
+                  href={whatsappLink(t("whatsappMsg"), site.whatsapp)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={buttonClass(
@@ -108,7 +110,7 @@ export default async function ContactPage({
                   <WhatsAppIcon className="h-5 w-5" />
                   {t("whatsapp")}
                 </a>
-                <a href={telLink()} className={buttonClass("primary")}>
+                <a href={telLink(site.phoneIntl)} className={buttonClass("primary")}>
                   <Phone className="h-4 w-4" />
                   {t("phone")}
                 </a>
@@ -147,7 +149,7 @@ export default async function ContactPage({
                   lat={site.address.lat}
                   lng={site.address.lng}
                   label={site.name}
-                  zoom={15}
+                  zoom={site.address.zoom}
                 />
               </div>
             </Reveal>

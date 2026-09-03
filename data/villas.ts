@@ -188,10 +188,13 @@ async function fetchAllProjects(): Promise<VillaProject[]> {
         );
       }
 
+      // Yalnızca admin panelde "TrendEv sitesi" hedefi seçilmiş projeler
+      // yayınlanır (bkz. trendarsa-app migration 20260903120000).
       const { data, error } = await supabase
         .from("projects")
         .select(PROJECT_SELECT)
         .eq("category_id", category.id)
+        .contains("publish_targets", ["trendev-web"])
         .not("slug", "is", null)
         .order("created_at", { ascending: true });
       if (error) throw new Error(`Supabase villa projeleri sorgusu başarısız: ${error.message}`);

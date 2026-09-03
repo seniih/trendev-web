@@ -1,11 +1,12 @@
 import { useTranslations } from "next-intl";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { Link } from "@/i18n/navigation";
-import { site, telLink } from "@/data/site";
+import { telLink } from "@/data/site";
+import type { SiteInfo } from "@/data/site-content";
 import { Container } from "./ui";
 import { InstagramIcon, FacebookIcon } from "./BrandIcons";
 
-export function Footer() {
+export function Footer({ site }: { site: SiteInfo }) {
   const t = useTranslations();
   const nav = useTranslations("nav");
   const year = new Date().getFullYear();
@@ -78,7 +79,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone className="h-4 w-4 shrink-0 text-gold-500" />
-                <a href={telLink()} className="hover:text-leaf-400">
+                <a href={telLink(site.phoneIntl)} className="hover:text-leaf-400">
                   {site.phoneDisplay}
                 </a>
               </li>

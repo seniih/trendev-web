@@ -1,7 +1,8 @@
-import { site } from "@/data/site";
+import { getSiteInfo } from "@/data/site-content";
 
 /** RealEstateAgent / LocalBusiness yapılandırılmış verisi (SEO). */
-export function OrganizationJsonLd() {
+export async function OrganizationJsonLd() {
+  const site = await getSiteInfo();
   const data = {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
