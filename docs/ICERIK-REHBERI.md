@@ -26,7 +26,7 @@ Kod dosyalarında değişiklik yaptıktan sonra kontrol etmek için: `npm run de
 | `projeler-haritasi.jpg` | Ana sayfada, istatistiklerin altındaki "Projelerimiz Haritada" bölümü |
 | `projeler-baslik.jpg` | Projeler listesi sayfasının üst görseli |
 | `hakkimizda-baslik.jpg` | Hakkımızda sayfasının üst görseli |
-| `neden-trendev-baslik.jpg` | Neden TrendEv sayfasının üst görseli |
+| `neden-trendev.png` | **Zaten eklendi** — Neden TrendEv sayfasının üst görseli |
 | `iletisim-baslik.jpg` | İletişim sayfasının üst görseli |
 | `kurucu.png` | **Zaten eklendi** — kurucunun katalogdan alınan gerçek fotoğrafı, dokunmanıza gerek yok |
 

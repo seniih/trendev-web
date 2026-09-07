@@ -37,7 +37,7 @@ export default async function WhyPage({
       <PageHeader
         title={t("title")}
         subtitle={t("subtitle")}
-        image="/images/site/neden-trendev-baslik.jpg"
+        image="/images/site/neden-trendev.png"
       />
 
       <Section className="bg-cream">
