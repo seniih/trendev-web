@@ -172,11 +172,28 @@ function mapRow(row: ProjectRow): VillaProject {
   };
 }
 
-let projectsCache: Promise<VillaProject[]> | null = null;
+const CACHE_TTL_MS = 60 * 1000;
+
+interface CacheEntry<T> {
+  data: T;
+  timestamp: number;
+}
+
+let projectsCache: CacheEntry<VillaProject[]> | null = null;
+let inflightProjectsPromise: Promise<VillaProject[]> | null = null;
 
 async function fetchAllProjects(): Promise<VillaProject[]> {
-  if (!projectsCache) {
-    projectsCache = (async () => {
+  const now = Date.now();
+  if (projectsCache && now - projectsCache.timestamp < CACHE_TTL_MS) {
+    return projectsCache.data;
+  }
+
+  if (inflightProjectsPromise) {
+    return inflightProjectsPromise;
+  }
+
+  inflightProjectsPromise = (async () => {
+    try {
       const { data: category, error: categoryError } = await supabase
         .from("categories")
         .select("id")
@@ -199,10 +216,20 @@ async function fetchAllProjects(): Promise<VillaProject[]> {
         .order("created_at", { ascending: true });
       if (error) throw new Error(`Supabase villa projeleri sorgusu başarısız: ${error.message}`);
 
-      return (data as unknown as ProjectRow[]).map(mapRow);
-    })();
-  }
-  return projectsCache;
+      const projects = (data as unknown as ProjectRow[]).map(mapRow);
+      projectsCache = { data: projects, timestamp: Date.now() };
+      return projects;
+    } catch (err) {
+      if (projectsCache) {
+        return projectsCache.data;
+      }
+      throw err;
+    } finally {
+      inflightProjectsPromise = null;
+    }
+  })();
+
+  return inflightProjectsPromise;
 }
 
 export async function getVillaProjects(): Promise<VillaProject[]> {

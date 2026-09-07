@@ -95,11 +95,28 @@ interface SectionRow {
   enabled: boolean;
 }
 
-let sectionsCache: Promise<SectionRow[]> | null = null;
+const CACHE_TTL_MS = 60 * 1000;
+
+interface CacheEntry<T> {
+  data: T;
+  timestamp: number;
+}
+
+let sectionsCache: CacheEntry<SectionRow[]> | null = null;
+let inflightSectionsPromise: Promise<SectionRow[]> | null = null;
 
 function fetchSections(): Promise<SectionRow[]> {
-  if (!sectionsCache) {
-    sectionsCache = (async () => {
+  const now = Date.now();
+  if (sectionsCache && now - sectionsCache.timestamp < CACHE_TTL_MS) {
+    return Promise.resolve(sectionsCache.data);
+  }
+
+  if (inflightSectionsPromise) {
+    return inflightSectionsPromise;
+  }
+
+  inflightSectionsPromise = (async () => {
+    try {
       const { data, error } = await supabase
         .from("site_sections")
         .select(
@@ -109,10 +126,18 @@ function fetchSections(): Promise<SectionRow[]> {
         )
         .eq("site", SITE_KEY);
       if (error) throw new Error(`site_sections okunamadı: ${error.message}`);
-      return (data ?? []) as SectionRow[];
-    })();
-  }
-  return sectionsCache;
+      const rows = (data ?? []) as SectionRow[];
+      sectionsCache = { data: rows, timestamp: Date.now() };
+      return rows;
+    } catch (err) {
+      if (sectionsCache) return sectionsCache.data;
+      throw err;
+    } finally {
+      inflightSectionsPromise = null;
+    }
+  })();
+
+  return inflightSectionsPromise;
 }
 
 export async function getSection(key: SectionKey, locale: Locale): Promise<SectionContent | null> {
@@ -130,33 +155,74 @@ export async function getSection(key: SectionKey, locale: Locale): Promise<Secti
   };
 }
 
-let statsCache: Promise<StatItem[]> | null = null;
+interface StatRow {
+  value_tr: string | null;
+  value_en: string | null;
+  label_tr: string | null;
+  label_en: string | null;
+  position: number;
+}
 
-/** Rakam şeridi — DB boşsa boş dizi döner, sayfa çeviri dosyasına düşer. */
-export async function getStats(locale: Locale): Promise<StatItem[]> {
-  if (!statsCache) {
-    statsCache = (async () => {
+let statsCache: CacheEntry<StatRow[]> | null = null;
+let inflightStatsPromise: Promise<StatRow[]> | null = null;
+
+async function fetchStatsRows(): Promise<StatRow[]> {
+  const now = Date.now();
+  if (statsCache && now - statsCache.timestamp < CACHE_TTL_MS) {
+    return statsCache.data;
+  }
+
+  if (inflightStatsPromise) {
+    return inflightStatsPromise;
+  }
+
+  inflightStatsPromise = (async () => {
+    try {
       const { data, error } = await supabase
         .from("site_stats")
         .select("value_tr, value_en, label_tr, label_en, position")
         .eq("site", SITE_KEY)
         .order("position", { ascending: true });
       if (error) throw new Error(`site_stats okunamadı: ${error.message}`);
-      return (data ?? []).map((row) => ({
-        value: pick(row.value_tr, row.value_en, locale) ?? "",
-        label: pick(row.label_tr, row.label_en, locale) ?? "",
-      }));
-    })();
-  }
-  return statsCache;
+      const rows = (data ?? []) as StatRow[];
+      statsCache = { data: rows, timestamp: Date.now() };
+      return rows;
+    } catch (err) {
+      if (statsCache) return statsCache.data;
+      throw err;
+    } finally {
+      inflightStatsPromise = null;
+    }
+  })();
+
+  return inflightStatsPromise;
 }
 
-let infoCache: Promise<SiteInfo> | null = null;
+/** Rakam şeridi — DB boşsa boş dizi döner, sayfa çeviri dosyasına düşer. */
+export async function getStats(locale: Locale): Promise<StatItem[]> {
+  const rows = await fetchStatsRows();
+  return rows.map((row) => ({
+    value: pick(row.value_tr, row.value_en, locale) ?? "",
+    label: pick(row.label_tr, row.label_en, locale) ?? "",
+  }));
+}
+
+let infoCache: CacheEntry<SiteInfo> | null = null;
+let inflightInfoPromise: Promise<SiteInfo> | null = null;
 
 /** İletişim bilgileri + harita konumu; DB'de eksik alan varsa statik değere düşer. */
 export async function getSiteInfo(): Promise<SiteInfo> {
-  if (!infoCache) {
-    infoCache = (async () => {
+  const now = Date.now();
+  if (infoCache && now - infoCache.timestamp < CACHE_TTL_MS) {
+    return infoCache.data;
+  }
+
+  if (inflightInfoPromise) {
+    return inflightInfoPromise;
+  }
+
+  inflightInfoPromise = (async () => {
+    try {
       const { data, error } = await supabase
         .from("site_settings")
         .select("*")
@@ -164,7 +230,7 @@ export async function getSiteInfo(): Promise<SiteInfo> {
         .maybeSingle();
       if (error) throw new Error(`site_settings okunamadı: ${error.message}`);
       if (!data) return STATIC_INFO;
-      return {
+      const info: SiteInfo = {
         name: text(data.brand_name) ?? STATIC_INFO.name,
         legalName: text(data.legal_name) ?? STATIC_INFO.legalName,
         url: text(data.site_url) ?? STATIC_INFO.url,
@@ -185,8 +251,16 @@ export async function getSiteInfo(): Promise<SiteInfo> {
           instagram: text(data.instagram_url) ?? STATIC_INFO.social.instagram,
           facebook: text(data.facebook_url) ?? STATIC_INFO.social.facebook,
         },
-      } satisfies SiteInfo;
-    })();
-  }
-  return infoCache;
+      };
+      infoCache = { data: info, timestamp: Date.now() };
+      return info;
+    } catch (err) {
+      if (infoCache) return infoCache.data;
+      throw err;
+    } finally {
+      inflightInfoPromise = null;
+    }
+  })();
+
+  return inflightInfoPromise;
 }

@@ -15,5 +15,9 @@ export function imageExists(publicPath: string | undefined | null): publicPath i
   if (!publicPath) return false;
   if (/^https?:\/\//.test(publicPath)) return true;
   if (!publicPath.startsWith("/")) return false;
-  return existsSync(path.join(PUBLIC_DIR, publicPath));
+  try {
+    return existsSync(path.join(PUBLIC_DIR, publicPath));
+  } catch {
+    return false;
+  }
 }

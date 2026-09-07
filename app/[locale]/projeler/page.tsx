@@ -8,6 +8,8 @@ import { Container, Section } from "@/components/ui";
 import { PageHeader } from "@/components/PageHeader";
 import { VillasExplorer } from "@/components/VillasExplorer";
 
+export const revalidate = 60;
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }

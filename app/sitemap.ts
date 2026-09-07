@@ -3,7 +3,7 @@ import { getSiteInfo } from "@/data/site-content";
 import { getVillaProjects } from "@/data/villas";
 import { routing } from "@/i18n/routing";
 
-export const dynamic = "force-static";
+export const revalidate = 3600;
 
 const staticPaths = ["", "/projeler", "/neden-trendev", "/hakkimizda", "/iletisim"];
 

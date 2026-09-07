@@ -29,6 +29,9 @@ import { Reveal } from "@/components/Reveal";
 import { routing } from "@/i18n/routing";
 import { WhatsAppIcon } from "@/components/FloatingContact";
 
+export const revalidate = 60;
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
   const projects = await getVillaProjects();
   return routing.locales.flatMap((locale) =>

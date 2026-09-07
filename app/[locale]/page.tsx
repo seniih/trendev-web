@@ -40,6 +40,8 @@ const HERO_IMAGE = "/images/site/hero.jpg";
 const TRUST_IMAGE = "/images/site/tanitim-video.jpg";
 const PROJECTS_MAP_IMAGE = "/images/site/projeler-haritasi.jpg";
 
+export const revalidate = 60;
+
 export default async function HomePage({
   params,
 }: {

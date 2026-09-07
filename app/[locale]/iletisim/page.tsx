@@ -11,6 +11,8 @@ import { MapEmbed } from "@/components/MapEmbed";
 import { WhatsAppIcon } from "@/components/FloatingContact";
 import { Reveal } from "@/components/Reveal";
 
+export const revalidate = 60;
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
