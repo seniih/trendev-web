@@ -24,7 +24,7 @@ export type RoomKey =
 
 export interface RoomItem {
   key: RoomKey;
-  count: number;
+  areaM2?: number | null;
 }
 
 export type OutdoorKind = "veranda" | "terrace";
@@ -65,7 +65,7 @@ export interface VillaProject {
 
 interface ProjectFloorRoomRow {
   room_key: RoomKey;
-  count: number;
+  area_m2: number | null;
   position: number;
 }
 
@@ -121,7 +121,7 @@ const PROJECT_SELECT = `
   parcel_kind, parcel_area_min, parcel_area_max, price_range_min, price_range_max,
   total_area_m2, travel_to_sakarya_min, travel_to_istanbul_hour, cover_image_key,
   project_floors ( key, area_m2, outdoor_kind, outdoor_area_m2, position,
-    project_floor_rooms ( room_key, count, position ) ),
+    project_floor_rooms ( room_key, area_m2, position ) ),
   project_images ( storage_key, position )
 `;
 
@@ -136,7 +136,7 @@ function mapRow(row: ProjectRow): VillaProject {
         : undefined,
       rooms: [...floor.project_floor_rooms]
         .sort((a, b) => a.position - b.position)
-        .map((r) => ({ key: r.room_key, count: r.count })),
+        .map((r) => ({ key: r.room_key, areaM2: r.area_m2 })),
     }));
 
   const gallery = [...row.project_images]

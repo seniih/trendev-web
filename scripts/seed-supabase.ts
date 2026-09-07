@@ -118,7 +118,7 @@ async function main() {
       const roomRows = floor.rooms.map((room, roomIndex) => ({
         floor_id: floorRow.id,
         room_key: room.key,
-        count: room.count,
+        area_m2: room.areaM2 ?? null,
         position: roomIndex,
       }));
       if (roomRows.length > 0) {

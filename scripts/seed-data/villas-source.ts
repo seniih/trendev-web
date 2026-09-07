@@ -34,7 +34,8 @@ export type RoomKey =
 
 export interface RoomItem {
   key: RoomKey;
-  count: number;
+  count?: number;
+  areaM2?: number | null;
 }
 
 export type OutdoorKind = "veranda" | "terrace";

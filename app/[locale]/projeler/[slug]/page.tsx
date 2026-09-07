@@ -160,7 +160,12 @@ export default async function VillaDetail({
                         {floor.rooms.map((room, i) => (
                           <li key={i} className="flex items-center gap-2">
                             <Check className="h-3.5 w-3.5 text-leaf-600" />
-                            {room.count} {r(room.key)}
+                            <span>{r(room.key)}</span>
+                            {room.areaM2 ? (
+                              <span className="text-xs font-medium text-leaf-800">
+                                ({room.areaM2} m²)
+                              </span>
+                            ) : null}
                           </li>
                         ))}
                         {floor.outdoor && (
