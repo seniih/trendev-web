@@ -1,7 +1,7 @@
 /**
  * Trend Ev — ev/villa projeleri verisi.
  * Kaynak: Supabase'deki `projects` tablosu (kategori: `ev`), trendarsa-app ile
- * ortak veritabanı. İçerik artık admin panelden (bkz. trend-admin) veya
+ * ortak veritabanı. İçerik artık admin panelden (bkz. trendarsa-admin) veya
  * trendarsa-app'in Flutter admin ekranlarından girilip düzenlenir — bu dosya
  * sadece tipleri tanımlar ve Supabase satırlarını `VillaProject` şekline
  * eşler. İlk içerik `docs/katalog.md`'den (trendarsa-katalog.pdf) tek seferlik

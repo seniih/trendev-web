@@ -4,14 +4,14 @@ Bu dosya, siteye **gerçek fotoğrafları ve gerçek metinleri** nereye ekleyece
 gösterir.
 
 **Önemli değişiklik:** proje bilgileri (başlık, açıklama, fiyat, kat planı) ve
-proje fotoğrafları artık kod dosyalarında değil, **`trend-admin` web panelinde**
+proje fotoğrafları artık kod dosyalarında değil, **`trendarsa-admin` web panelinde**
 düzenleniyor — trendarsa-app (mobil admin) ile aynı ortak veritabanını kullanır,
 oradan eklediğiniz bir proje bu sitede de otomatik görünür. Sadece firma
 bilgileri (bölüm 2) ve site geneli görseller (bölüm 1) hâlâ bu repodaki
 dosyalarda.
 
 Kod dosyalarında değişiklik yaptıktan sonra kontrol etmek için: `npm run dev`
-çalıştırıp tarayıcıda `http://localhost:3000` adresini yenileyin.
+çalıştırıp tarayıcıda `http://localhost:3002` adresini yenileyin.
 
 ---
 
@@ -62,7 +62,7 @@ virgülleri silmeyin.
 
 ## 3. Proje Bilgileri (her projenin adı, açıklaması, fiyatı, oda sayıları, fotoğrafları)
 
-**Artık kod dosyasında değil — `trend-admin` web panelinden düzenlenir.**
+**Artık kod dosyasında değil — `trendarsa-admin` web panelinden düzenlenir.**
 Panele girip (giriş bilgileriniz için bana sorun) ilgili projeyi açtığınızda
 aşağıdakilerin hepsini oradan değiştirebilirsiniz:
 
@@ -81,6 +81,6 @@ görünür.
 
 ## 4. Yeni proje eklemek / proje kaldırmak
 
-Bunlar da `trend-admin` panelinden yapılır — panelde "Yeni Proje" ile
+Bunlar da `trendarsa-admin` panelinden yapılır — panelde "Yeni Proje" ile
 ekleyebilir, mevcut bir projeyi silebilirsiniz. Teknik bir sorun yaşarsanız
 bana söyleyin.
